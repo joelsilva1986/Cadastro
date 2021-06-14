@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <link rel="stylesheet" href="./styles.css">
+        <title>Lista de Cadastro</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script> 
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                <h1>
+                    <strong class="title">Adicione um novo contato</strong>
+                </h1>
+            </header>
+            
+            <div><br/>
+                <label>Nome:
+                <br /> 
+                <input 
+                    type="text" 
+                    class="userFirstname"
+                    v-model="contact.firstname" 
+                />
+                </label> <br />
+        
+                <label>Sobrenome: 
+                <br />   
+                <input 
+                    type="text" 
+                    class="userLastname" 
+                    v-model="contact.lastname"
+                    />
+                </label> <br />
+        
+                <label>Telefone: 
+                <br />
+                <input 
+                    type="tel" 
+                    class="userPhone"
+                    v-model="contact.phone" 
+                    />
+                </label> <br />
+        
+                <button 
+                    class="submitButton"
+                    @click="add()"
+                >
+                    Adicionar contato
+            </button>
+            </div>
+    
+            <table id="phoneBookItems" class="informationTable">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Telefone</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in list">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.firstname}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>
+                        <button @click="edit(item)" class="editMode">Editar</button>
+                        <button @click="remove(item)" class="removeMode">Excluir</button>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    
+  
+       <script src="./scripts.js"></script>
+ 
+</html>
+
+  
